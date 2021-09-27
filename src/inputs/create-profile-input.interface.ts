@@ -1,4 +1,4 @@
 export interface CreateProfileInput {
-    bio: string;
-    userId: number;
+  bio: string;
+  userId: number;
 }

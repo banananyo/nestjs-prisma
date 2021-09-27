@@ -7,7 +7,7 @@ services:
       - db_data:/var/lib/mysql
     restart: always
     ports:
-      - 3306:3306
+      - 0.0.0.0:3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: aa111111
       MYSQL_DATABASE: store
@@ -26,5 +26,31 @@ services:
     restart: always
     ports:
       - 8081:80
+      
+  # redis:
+  #   image: docker.io/bitnami/redis
+  #   command: '/opt/bitnami/scripts/redis/run.sh --maxmemory 100mb'
+  #   environment:
+  #     # ALLOW_EMPTY_PASSWORD is recommended only for development.
+  #     - ALLOW_EMPTY_PASSWORD=yes
+  #     # - REDIS_PASSWORD=aa111111
+  #     - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+  #   ports:
+  #     - '6379:6379'
+  #   volumes:
+  #     - 'redis_data:/bitnami/redis/data'
+
+  redis-alpine:
+    image: "redis:alpine"
+    command: redis-server
+    ports:
+      - "6379:6379"
+    # volumes:
+      # - redis-data:/var/lib/redis
+    #   - redis.conf:/usr/local/etc/redis/redis.conf
+    environment:
+      - REDIS_REPLICATION_MODE=master
 volumes:
   db_data: {}
+  # redis_data:
+  #   driver: local

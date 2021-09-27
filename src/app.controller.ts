@@ -1,4 +1,10 @@
-import { Body, Controller, Get, Patch, Post as PostMethod } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Patch,
+  Post as PostMethod,
+} from '@nestjs/common';
 import { Post, Profile, User } from '@prisma/client';
 import { AppService } from './app.service';
 import { CreatePostInput } from './inputs/create-post-input.interface';
@@ -41,7 +47,9 @@ export class AppController {
   }
 
   @PostMethod('profile')
-  async createProfile(@Body() input: CreateProfileInput): Promise<Profile | null> {
+  async createProfile(
+    @Body() input: CreateProfileInput,
+  ): Promise<Profile | null> {
     return this.appService.createProfile(input);
   }
 

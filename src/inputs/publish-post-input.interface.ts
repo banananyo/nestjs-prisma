@@ -1,3 +1,3 @@
 export interface PublishPostInput {
-    postId: number;
+  postId: number;
 }
