@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Task } from '@prisma/client';
-import { InsertTaskInput } from './interfaces/input';
+import { InsertTaskInput } from './interfaces/task-input';
 import { TaskService } from './task.service';
 
 @Controller('task')

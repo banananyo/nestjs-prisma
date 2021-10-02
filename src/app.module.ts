@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TaskModule } from './modules/task/task.module';
 import { join } from 'path';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { join } from 'path';
       installSubscriptionHandlers: true,
     }),
     TaskModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService, PrismaClient],
