@@ -35,3 +35,17 @@ model User {
   posts   Post[]
   profile Profile?
 }
+
+model Task {
+  id            Int      @default(autoincrement()) @id
+  title         String
+  desciption    String?
+  status  TaskStatus @default(TODO)
+}
+
+enum TaskStatus {
+  TODO
+  DOING
+  CANCEL
+  SUCCESS
+}

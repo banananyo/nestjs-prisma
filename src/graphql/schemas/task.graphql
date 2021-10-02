@@ -1,0 +1,17 @@
+type Task {
+  id: Int
+  title: String
+  description: String
+  status: TaskStatus
+}
+
+enum TaskStatus {
+  TODO
+  DOING
+  CANCEL
+  SUCCESS
+}
+
+type Query {
+  taskList: [Task]
+}
