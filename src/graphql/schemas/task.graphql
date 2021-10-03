@@ -1,5 +1,5 @@
 type Task {
-  id: Int
+  id: Int!
   title: String
   description: String
   status: TaskStatus
@@ -14,4 +14,30 @@ enum TaskStatus {
 
 type Query {
   taskList: [Task]
+  task(input: FindOneTaskInput!): Task
+}
+
+type Mutation {
+  insertTask(input: InsertTaskInput!): Task!
+  editTask(input: EditTaskInput!): Task!
+  deleteTask(input: DeleteTaskInput!): Task!
+}
+
+input InsertTaskInput {
+  title: String!
+}
+
+input EditTaskInput {
+  id: Int!
+  title: String
+  description: String
+  status: TaskStatus
+}
+
+input DeleteTaskInput {
+  id: Int!
+}
+
+input FindOneTaskInput {
+  id: Int!
 }

@@ -14,6 +14,16 @@ export enum TaskStatus {
     SUCCESS = "SUCCESS"
 }
 
+export interface InsertTaskInput {
+    title: string;
+}
+
+export interface EditTaskInput {
+    title?: Nullable<string>;
+    description?: Nullable<string>;
+    status?: Nullable<TaskStatus>;
+}
+
 export interface Task {
     id?: Nullable<number>;
     title?: Nullable<string>;
@@ -23,6 +33,11 @@ export interface Task {
 
 export interface IQuery {
     taskList(): Nullable<Nullable<Task>[]> | Promise<Nullable<Nullable<Task>[]>>;
+}
+
+export interface IMutation {
+    insertTask(input: InsertTaskInput): Task | Promise<Task>;
+    editTask(input: EditTaskInput): Task | Promise<Task>;
 }
 
 type Nullable<T> = T | null;
